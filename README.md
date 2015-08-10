@@ -10,48 +10,29 @@ Docker image was prepared according to [Installing CDH 5 with YARN on a Single L
 * JobHistoryServer
 * Oozie
 * Hue
-* Spark (instalation for execution on top of YARN)
+* Spark (installation for execution on top of YARN)
 
 ###Execution
 Get docker image
 
-    docker pull chalimartines/cdh5-pseudo-distributed
+    docker pull yobibytes/cdh5-pseudo-distributed
 
 Run image with specified port mapping
 
     docker run --name cdh -d -p 8020:8020 -p 50070:50070 -p 50010:50010 -p 50020:50020 -p 50075:50075 -p 8030:8030 -p 8031:8031 -p 8032:8032 -p 8033:8033 -p 8088:8088 -p 8040:8040 -p 8042:8042 -p 10020:10020 -p 19888:19888 -p 11000:11000 -p 8888:8888 -p 18080:18080 -p 9999:9999 chalimartines/cdh5-pseudo-distributed
 
- Or you can use docker-compose configuration from [here](https://github.com/chali/cdh5-pseudo-distributed-cluster-docker-compose)
-  
-If you are Mac OS user with boot2docker and you would like to get from your local system to a cdh container add these port forwardings
-
-	VBoxManage modifyvm "boot2docker-vm" --natpf1 "tcp-port8020,tcp,,8020,,8020"
-	VBoxManage modifyvm "boot2docker-vm" --natpf1 "tcp-port50070,tcp,,50070,,50070"
-	VBoxManage modifyvm "boot2docker-vm" --natpf1 "tcp-port50010,tcp,,50010,,50010"
-	VBoxManage modifyvm "boot2docker-vm" --natpf1 "tcp-port50020,tcp,,50020,,50020"
-	VBoxManage modifyvm "boot2docker-vm" --natpf1 "tcp-port50075,tcp,,50075,,50075"
-	VBoxManage modifyvm "boot2docker-vm" --natpf1 "tcp-port8030,tcp,,8030,,8030"
-	VBoxManage modifyvm "boot2docker-vm" --natpf1 "tcp-port8031,tcp,,8031,,8031"
-	VBoxManage modifyvm "boot2docker-vm" --natpf1 "tcp-port8032,tcp,,8032,,8032"
-	VBoxManage modifyvm "boot2docker-vm" --natpf1 "tcp-port8033,tcp,,8033,,8033"
-	VBoxManage modifyvm "boot2docker-vm" --natpf1 "tcp-port8088,tcp,,8088,,8088"
-	VBoxManage modifyvm "boot2docker-vm" --natpf1 "tcp-port8040,tcp,,8040,,8040"
-	VBoxManage modifyvm "boot2docker-vm" --natpf1 "tcp-port8042,tcp,,8042,,8042"
-	VBoxManage modifyvm "boot2docker-vm" --natpf1 "tcp-port10020,tcp,,10020,,10020"
-	VBoxManage modifyvm "boot2docker-vm" --natpf1 "tcp-port19888,tcp,,19888,,19888"
-	VBoxManage modifyvm "boot2docker-vm" --natpf1 "tcp-port11000,tcp,,11000,,11000"
-	VBoxManage modifyvm "boot2docker-vm" --natpf1 "tcp-port8888,tcp,,8888,,8888"
-    VBoxManage modifyvm "boot2docker-vm" --natpf1 "tcp-port9999,tcp,,9999,,9999"
-    VBoxManage modifyvm "boot2docker-vm" --natpf1 "tcp-port18080,tcp,,18080,,18080"
-
+ Or you can use docker-compose configuration: 
+ 
+    docker-compose up -d
+ 
 ###UI entry points
-Those urls consider port forwarding from localhost.
-* name node - http://localhost:50070
-* resource manager - http://localhost:8088
-* job history server - http://localhost:19888
-* oozie console - http://localhost:11000
-* hue - http://localhost:8888
-* spark history server - http://localhost:18080
+Those urls consider port forwarding from docker host.
+* name node - http://docker:50070
+* resource manager - http://docker:8088
+* job history server - http://docker:19888
+* oozie console - http://docker:11000
+* hue - http://docker:8888
+* spark history server - http://docker:18080
 
 ####Hue login
 You will be asked to create account during the first login. You can pick your prefered username and password. It will create home folder on HDFS and it can be used as hadoop user.
