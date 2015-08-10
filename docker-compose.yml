@@ -1,6 +1,8 @@
 cdh:
   image: yobibytes/cdh5-pseudo-distributed
   hostname: cdh
+  volumes:
+    - /mnt/docker-share/cdh/log:/var/log
   ports:
     - "8020:8020"
     - "50070:50070"
