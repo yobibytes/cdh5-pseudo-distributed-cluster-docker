@@ -33,6 +33,7 @@ Those urls consider port forwarding from docker host.
 * oozie console - http://docker:11000
 * hue - http://docker:8888
 * spark history server - http://docker:18080
+
 (note: you can replace the boot2docker ip with a hostname like 'docker' in the hosts file.)
 
 ####Hue login
