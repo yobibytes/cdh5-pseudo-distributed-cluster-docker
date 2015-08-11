@@ -25,7 +25,7 @@ Run image with specified port mapping
  
     docker-compose up -d
  
-###UI entry points
+###web frontend entry points
 Those urls consider port forwarding from docker host.
 * name node - http://docker:50070
 * resource manager - http://docker:8088
@@ -33,6 +33,7 @@ Those urls consider port forwarding from docker host.
 * oozie console - http://docker:11000
 * hue - http://docker:8888
 * spark history server - http://docker:18080
+(note: you can replace the boot2docker ip with a hostname like 'docker' in the hosts file.)
 
 ####Hue login
 You will be asked to create account during the first login. You can pick your prefered username and password. It will create home folder on HDFS and it can be used as hadoop user.
